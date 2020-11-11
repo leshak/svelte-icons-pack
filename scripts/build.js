@@ -194,7 +194,7 @@ async function loadPack(iconPack) {
     });
   }
 
-  console.log(" ...generate svelte componets for:", iconPack.packName);
+  console.log(` ...generate svelte componets for: "${iconPack.packName}"`);
   for (const item of folders) {
     const svgList = await loadSvgFilesList(item);
     // console.log(svgList);
@@ -222,5 +222,7 @@ async function main() {
   for (const iconPack of iconManifest) {
     await loadPack(iconPack);
   }
+
+  console.log("Done!");
 }
 main();
