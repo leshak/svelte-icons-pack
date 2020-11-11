@@ -4,6 +4,7 @@ dist
 *.log
 
 # icons
+Icon.svelte
 ai
 fa
 wi
