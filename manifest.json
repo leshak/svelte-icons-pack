@@ -6,6 +6,12 @@
     "subFolders": true
   },
   {
+    "shortName": "fa",
+    "packName": "Font Awesome",
+    "iconsPath": "./src/icons/Font-Awesome/svgs",
+    "subFolders": true
+  },
+  {
     "shortName": "wi",
     "packName": "Weather Icons",
     "iconsPath": "./src/icons/weather-icons/svg",
