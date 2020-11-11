@@ -227,7 +227,7 @@ async function generateSvelteIconComponent() {
   height={size}
   stroke-width="0"
   class={className}
-  {...src.a, ...attr}
+  {...src.a}
   xmlns="http://www.w3.org/2000/svg">
   {#if title}
     <title>{title}</title>
