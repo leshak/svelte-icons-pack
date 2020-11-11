@@ -1,0 +1,8 @@
+[
+  {
+    "shortName": "ai",
+    "packName": "Ant Design SVG icons",
+    "iconsPath": "./src/icons/ant-design-icons/packages/icons-svg/svg",
+    "subFolders": true
+  }
+]
