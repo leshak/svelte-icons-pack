@@ -1,0 +1,6 @@
+[submodule "src/icons/ant-design-icons"]
+	path = src/icons/ant-design-icons
+	url = https://github.com/ant-design/ant-design-icons.git
+[submodule "src/icons/material-design-icons"]
+	path = src/icons/material-design-icons
+	url = http://github.com/google/material-design-icons/
