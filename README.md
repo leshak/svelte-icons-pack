@@ -1,6 +1,8 @@
 # Svelte Icons Pack as svelte components
 
-### Based on https://github.com/react-icons/react-icons)
+Based on https://github.com/react-icons/react-icons)
+
+ 
 
 ## Installation
 
@@ -34,9 +36,7 @@ npm install svelte-icons-pack --save
 
 ## Configuration
 
-You can configure react-icons props using [React Context API](https://reactjs.org/docs/context.html).
-
-_Requires **React 16.3** or higher._
+You can configure icons props using
 
 ```svelte
 <script>
