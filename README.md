@@ -22,10 +22,11 @@ npm install svelte-icons-pack --save
 
 ```svelte
 <script>
+  import Icon from 'svelte-icons-pack/Icon.svelte';
   import AiOutlineNodeExpand from 'svelte-icons-pack/ai/AiOutlineNodeExpand';
 </script>
 
-<AiOutlineNodeExpand />
+<Icon src={AiOutlineNodeExpand} />
 ```
 
 ## Icons
@@ -44,6 +45,7 @@ You can configure icons props using
 
 ```svelte
 <script>
+  import Icon from 'svelte-icons-pack/Icon.svelte';
   import AiOutlineNodeExpand from 'svelte-icons-pack/ai/AiOutlineNodeExpand';
 </script>
 
@@ -53,16 +55,16 @@ You can configure icons props using
   }
 </style>
 
-<AiOutlineNodeExpand color="red" size="64" className="custom-icon" title="Custom icon params" />
+<Icon src={AiOutlineNodeExpand} color="red" size="64" className="custom-icon" title="Custom icon params" />
 ```
 
 | Key         | Default               | Notes                              |
 | ----------- | --------------------- | ---------------------------------- |
+| `src`       | `SvgIcon`             |                                    |
 | `color`     | `undefined` (inherit) |                                    |
 | `size`      | `1em`                 |                                    |
 | `className` | `undefined`           |                                    |
 | `title`     | `undefined`           | Icon description for accessibility |
-| `attr`      | `undefined`           | Overwritten by other attributes    |
 
 ## Licence
 

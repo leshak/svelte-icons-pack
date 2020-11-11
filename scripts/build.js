@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const camelcase = require("camelcase");
 const rimraf = require("rimraf");
+const { stringify } = require("javascript-stringify");
 const { promisify } = require("util");
 
 const iconManifest = require("../manifest.json");
@@ -48,58 +49,37 @@ async function loadSvgFilesList({ svgPath, prefix }) {
   return outList;
 }
 
+function filterFolders(dir) {
+  if ([".DS_Store"].includes(dir)) return false;
+  return true;
+}
+
 function filterAttr(attr) {
   if (["p-id", "t", "style", "id"].includes(attr)) return false;
   return true;
 }
 
-function tagTreeToString(tagData, prefixSize = 4) {
+function tagTreeToString(tagData) {
   if (["defs"].includes(tagData.tag)) return "";
 
-  return `${" ".repeat(prefixSize)}<${tagData.tag}${Object.keys(tagData.attr)
+  return `<${tagData.tag}${Object.keys(tagData.attr)
     .filter(filterAttr)
     .map((k) => ` ${k}="${tagData.attr[k]}"`)
     .join("")}>${(tagData.child || [])
-    .map((t) => tagTreeToString(t, prefixSize * 2))
+    .map((t) => tagTreeToString(t))
     .filter((x) => !!x)
     .join("\n")}</${tagData.tag}>`;
 }
 
-async function generateSvelteComponent(fileName, iconData) {
-  if (iconData.tag !== "svg") return null;
-
-  return `<script>
-  // ${fileName}
-  export let color;
-  export let className;
-  export let size = "1em";
-  export let attr;
-  export let title;
-</script>
-
-<svg
-  stroke={color || 'currentColor'}
-  fill={color || 'currentColor'}
-  stroke-width="0"
-  width="{size}"
-  height="{size}"
-  class="{className}"
-  ${Object.keys(iconData.attr)
-    .filter(filterAttr)
-    .map((k) => `${k}="${iconData.attr[k]}"`)
-    .join(" ")} xmlns="http://www.w3.org/2000/svg" {...attr}>
-    {#if title}<title>{title}</title>{/if}
-${iconData.child
-  .map((t) => tagTreeToString(t))
-  .filter((x) => !!x)
-  .join("\n")}
-</svg>
-  `;
-}
-
-async function generateSvelteFile(outDir, fileName, iconData) {
-  const fileText = await generateSvelteComponent(fileName, iconData);
-  await writeFile(path.resolve(outDir, `${fileName}.svelte`), fileText);
+function generateSvgIconInfo(fileName, iconData) {
+  const comressed = {
+    a: iconData.attr,
+    c: (iconData.child || [])
+      .map((t) => tagTreeToString(t))
+      .filter((x) => !!x)
+      .join(""),
+  };
+  return `// ${fileName}\nexport default ${stringify(comressed, null, 2)};`;
 }
 
 async function convertIconData(svg, multiColor) {
@@ -179,7 +159,7 @@ async function loadPack(iconPack) {
   if (iconPack.subFolders) {
     // load subfolders
     const list = await readdir(baseFolder);
-    for (const li of list) {
+    for (const li of list.filter(filterFolders)) {
       folders.push({
         prefix:
           capitalizeFirstLetter(
@@ -198,14 +178,28 @@ async function loadPack(iconPack) {
   }
 
   console.log(` ...generate svelte componets for: "${iconPack.packName}"`);
+
+  // const svgIndexFile = path.resolve(packFolder, "index.js");
+  // console.log(" ...file: ", svgIndexFile);
+
+  const iconsList = [];
   for (const item of folders) {
     const svgList = await loadSvgFilesList(item);
-    // console.log(svgList);
+
     for (const svgFile of svgList) {
+      iconsList.push(svgFile.svgName);
+
       const iconData = await generateSvg(iconPack, svgFile);
-      await generateSvelteFile(packFolder, svgFile.svgName, iconData);
+      const svgAsJs = generateSvgIconInfo(svgFile.svgName, iconData);
+
+      writeFile(path.resolve(packFolder, `${svgFile.svgName}.js`), svgAsJs);
+
+      // appendFile(svgIndexFile, svgAsJs);
+      // appendFile(svgIndexFile, "\n\n");
     }
   }
+
+  // appendFile(svgIndexFile, `module.exports = {${iconsList.join(", ")}}`);
 }
 
 async function init() {
@@ -217,6 +211,34 @@ async function init() {
   }
 }
 
+async function generateSvelteIconComponent() {
+  writeFile(
+    path.resolve(outDir, "Icon.svelte"),
+    `<script>
+  export let src;
+  export let size = "1em";
+  export let color = undefined;
+  export let title = undefined;
+  export let className = '';
+</script>
+
+<svg
+  width={size}
+  height={size}
+  stroke-width="0"
+  class={className}
+  {...src.a, ...attr}
+  xmlns="http://www.w3.org/2000/svg">
+  {#if title}
+    <title>{title}</title>
+  {/if}
+  <g stroke={color || 'currentColor'} fill={color || 'currentColor'}>
+    {@html src.c}
+  </g>
+</svg>`
+  );
+}
+
 async function main() {
   console.log("Init...");
   await init();
@@ -225,6 +247,8 @@ async function main() {
   for (const iconPack of iconManifest) {
     await loadPack(iconPack);
   }
+
+  await generateSvelteIconComponent();
 
   console.log("Done!");
 }
