@@ -2,18 +2,20 @@ const cheerio = require("cheerio");
 const path = require("path");
 const fs = require("fs");
 const camelcase = require("camelcase");
+const rimraf = require("rimraf");
 const { promisify } = require("util");
 
 const iconManifest = require("../manifest.json");
 
 // папка для сохранения .svelte файлов
-const outDir = path.resolve(__dirname, "../dist");
+const outDir = path.resolve(__dirname, "../");
 
 const mkdir = promisify(fs.mkdir);
 const readdir = promisify(fs.readdir);
 const writeFile = promisify(fs.writeFile);
 const copyFile = promisify(fs.copyFile);
 const appendFile = promisify(fs.appendFile);
+const rimrafFolder = promisify(rimraf);
 
 function capitalizeFirstLetter(_string) {
   const fixName = {
@@ -172,7 +174,6 @@ async function loadPack(iconPack) {
   await mkdir(packFolder);
 
   const baseFolder = path.resolve(__dirname, "../", iconPack.iconsPath);
-  console.log(baseFolder);
 
   const folders = [];
   if (iconPack.subFolders) {
@@ -193,6 +194,7 @@ async function loadPack(iconPack) {
     });
   }
 
+  console.log(" ...generate svelte componets for:", iconPack.packName);
   for (const item of folders) {
     const svgList = await loadSvgFilesList(item);
     // console.log(svgList);
@@ -204,7 +206,12 @@ async function loadPack(iconPack) {
 }
 
 async function init() {
-  await mkdir(outDir);
+  // clean folders from manifest
+  console.log("Clean icons pack folders");
+  for (const iconPack of iconManifest) {
+    console.log(" ...remove:", iconPack.shortName);
+    await rimrafFolder(iconPack.shortName);
+  }
 }
 
 async function main() {
