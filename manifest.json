@@ -17,5 +17,11 @@
     "iconsPath": "./src/icons/weather-icons/svg",
     "subFolders": false,
     "removeMainPrefix": true
+  },
+  {
+    "shortName": "fi",
+    "packName": "Feather",
+    "iconsPath": "./src/icons/feather/icons",
+    "subFolders": false
   }
 ]
