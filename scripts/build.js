@@ -182,14 +182,17 @@ async function loadPack(iconPack) {
     for (const li of list) {
       folders.push({
         prefix:
-          capitalizeFirstLetter(iconPack.shortName) +
-          capitalizeFirstLetter(li.toLowerCase()),
+          capitalizeFirstLetter(
+            iconPack.removeMainPrefix ? "" : iconPack.shortName
+          ) + capitalizeFirstLetter(li.toLowerCase()),
         svgPath: path.resolve(baseFolder, li),
       });
     }
   } else {
     folders.push({
-      prefix: capitalizeFirstLetter(iconPack.shortName),
+      prefix: capitalizeFirstLetter(
+        iconPack.removeMainPrefix ? "" : iconPack.shortName
+      ),
       svgPath: baseFolder,
     });
   }

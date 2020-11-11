@@ -4,5 +4,12 @@
     "packName": "Ant Design SVG icons",
     "iconsPath": "./src/icons/ant-design-icons/packages/icons-svg/svg",
     "subFolders": true
+  },
+  {
+    "shortName": "wi",
+    "packName": "Weather Icons",
+    "iconsPath": "./src/icons/weather-icons/svg",
+    "subFolders": false,
+    "removeMainPrefix": true
   }
 ]

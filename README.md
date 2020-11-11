@@ -33,6 +33,7 @@ npm install svelte-icons-pack --save
 | Icon Library                                                       | License                                    | Version |
 | ------------------------------------------------------------------ | ------------------------------------------ | ------- |
 | [Ant Design Icons](https://github.com/ant-design/ant-design-icons) | [MIT](https://opensource.org/licenses/MIT) | 4.1.0   |
+| [Weather Icons](https://erikflowers.github.io/weather-icons/)|[SIL OFL 1.1](http://scripts.sil.org/OFL)|2.0.11
 You can add more icons by submitting pull requests or creating issues.
 
 ## Configuration
