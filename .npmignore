@@ -2,4 +2,6 @@ node_modules
 .DS_Store
 *.log
 src
-script
+scripts
+.gitmodules
+manifest.json
