@@ -49,7 +49,7 @@ async function loadSvgFilesList({ svgPath, prefix }) {
 }
 
 function filterAttr(attr) {
-  if (["p-id", "t"].includes(attr)) return false;
+  if (["p-id", "t", "style", "id"].includes(attr)) return false;
   return true;
 }
 
