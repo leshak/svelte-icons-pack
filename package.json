@@ -1,6 +1,6 @@
 {
   "name": "svelte-icons-pack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Svg icons as Svelte components",
   "main": "dist/index.js",
   "license": "MIT",
