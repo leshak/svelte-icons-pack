@@ -1,12 +1,20 @@
 {
   "name": "svelte-icons-pack",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Svg icons as Svelte components",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "build": "node scripts/build.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:leshak/svelte-icons-pack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leshak/svelte-icons-pack/issues"
+  },
+  "homepage": "https://github.com/leshak/svelte-icons-pack#readme",
   "devDependencies": {
     "camelcase": "^6.2.0",
     "cheerio": "^1.0.0-rc.3",
