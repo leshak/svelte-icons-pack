@@ -23,5 +23,11 @@
     "packName": "Feather",
     "iconsPath": "./src/icons/feather/icons",
     "subFolders": false
+  },
+  {
+    "shortName": "vsc",
+    "packName": "VS Code Icons",
+    "iconsPath": "./src/icons/vscode-codicons/src/icons",
+    "subFolders": false
   }
 ]

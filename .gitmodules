@@ -10,3 +10,6 @@
 [submodule "src/icons/feather"]
 	path = src/icons/feather
 	url = https://github.com/feathericons/feather.git
+[submodule "src/icons/vscode-codicons"]
+	path = src/icons/vscode-codicons
+	url = https://github.com/microsoft/vscode-codicons.git
