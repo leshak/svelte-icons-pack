@@ -591,6 +591,11 @@ supports-color@^7.0.0:
   dependencies:
     has-flag "^4.0.0"
 
+svelte-icons-pack@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/svelte-icons-pack/-/svelte-icons-pack-1.4.2.tgz#f713ae58bebf217fddbcdab550efaacddd00cda9"
+  integrity sha512-Rg4dDf/sIBy59vsSmV49NsvSGVRPmhjuqftqVLW3XRf2pjGtrWGXd+AaBz5WIrHEqHbZzLazy510BcZIuSf4dw==
+
 svelte@^3.0.0:
   version "3.29.7"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.29.7.tgz#e254eb2d0d609ce0fd60f052d444ac4a66d90f7d"
