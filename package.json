@@ -5,6 +5,7 @@
   "main": "Icon.svelte",
   "license": "MIT",
   "scripts": {
+    "submodule": "git submodule update --init",
     "build": "node scripts/build.js"
   },
   "repository": {
