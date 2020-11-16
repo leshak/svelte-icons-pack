@@ -2,11 +2,17 @@
   "version": 3,
   "file": "bundle.css",
   "sources": [
-    "App.svelte"
+    "App.svelte",
+    "LeftMenu.svelte",
+    "MainPage.svelte",
+    "Home.svelte"
   ],
   "sourcesContent": [
-    "<script>\n  export let name;\n</script>\n\n<style>\n  main {\n    text-align: center;\n    padding: 1em;\n    max-width: 240px;\n    margin: 0 auto;\n  }\n\n  h1 {\n    color: #ff3e00;\n    text-transform: uppercase;\n    font-size: 4em;\n    font-weight: 100;\n  }\n\n  @media (min-width: 640px) {\n    main {\n      max-width: none;\n    }\n  }\n</style>\n\n<main>\n  <h1>Hello {name}!</h1>\n  <p>\n    Visit the\n    <a href=\"https://svelte.dev/tutorial\">Svelte tutorial</a>\n    to learn how to build Svelte apps.\n  </p>\n</main>\n"
+    "<script>\n  import { Router, Link, Route } from \"svelte-routing\";\n\n  import LeftMenu from \"./components/LeftMenu.svelte\";\n  import MainPage from \"./components/MainPage.svelte\";\n</script>\n\n<style>\n  .container {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: nowrap;\n    justify-content: flex-start;\n    align-content: stretch;\n    align-items: flex-start;\n  }\n  .left {\n    order: 0;\n    flex: 0 1 250px;\n    align-self: auto;\n    padding: 24px 8px;\n  }\n  .right {\n    order: 0;\n    flex: 1 1 auto;\n    align-self: auto;\n  }\n</style>\n\n<Router>\n  <div class=\"container\">\n    <div class=\"left\">\n      <LeftMenu />\n    </div>\n    <div class=\"right\">\n      <MainPage />\n    </div>\n  </div>\n</Router>\n",
+    "<script>\n  import { Router, Link, Route } from \"svelte-routing\";\n\n  import SvelteLogo from \"./SvelteLogo.svelte\";\n</script>\n\n<style>\n  .top {\n    text-align: center;\n    color: #444444;\n  }\n  .title {\n    font-weight: 400;\n    font-size: 25px;\n    margin: 8px 0 16px;\n  }\n  input {\n    width: 100%;\n    margin: 16px 0;\n  }\n</style>\n\n<nav>\n  <Link to=\"/\">\n    <div class=\"top\">\n      <SvelteLogo />\n      <div class=\"title\">svelte-icons-pack</div>\n    </div>\n  </Link>\n  <div><input type=\"text\" placeholder=\"Search icons\" /></div>\n  <ul>\n    <li>\n      <Link to=\"pack/ai\">Ant Design Icons</Link>\n    </li>\n  </ul>\n</nav>\n",
+    "<script>\n  import { Router, Link, Route } from \"svelte-routing\";\n  import Home from \"../pages/Home.svelte\";\n  import IconsPackPage from \"../pages/IconsPackPage.svelte\";\n</script>\n\n<style>\n  main {\n    padding: 8px 24px;\n  }\n</style>\n\n<main>\n  <Route path=\"/\" component={Home} />\n  <Route path=\"pack/:packId\" component={IconsPackPage} />\n</main>\n",
+    "<style>\n  .info {\n    padding: 32px 0;\n  }\n</style>\n\n<div>\n  <h1>Svelte Icons Pack</h1>\n  <img src=\"https://img.shields.io/npm/v/svelte-icons-pack.svg\" alt=\"npm\" />\n  <div class=\"info\"><a href=\"https://github.com/leshak/svelte-icons-pack\">README</a></div>\n</div>\n"
   ],
   "names": [],
-  "mappings": "AAKE,IAAI,eAAC,CAAC,AACJ,UAAU,CAAE,MAAM,CAClB,OAAO,CAAE,GAAG,CACZ,SAAS,CAAE,KAAK,CAChB,MAAM,CAAE,CAAC,CAAC,IAAI,AAChB,CAAC,AAED,EAAE,eAAC,CAAC,AACF,KAAK,CAAE,OAAO,CACd,cAAc,CAAE,SAAS,CACzB,SAAS,CAAE,GAAG,CACd,WAAW,CAAE,GAAG,AAClB,CAAC,AAED,MAAM,AAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AACzB,IAAI,eAAC,CAAC,AACJ,SAAS,CAAE,IAAI,AACjB,CAAC,AACH,CAAC"
+  "mappings": "AAQE,UAAU,eAAC,CAAC,AACV,OAAO,CAAE,IAAI,CACb,cAAc,CAAE,GAAG,CACnB,SAAS,CAAE,MAAM,CACjB,eAAe,CAAE,UAAU,CAC3B,aAAa,CAAE,OAAO,CACtB,WAAW,CAAE,UAAU,AACzB,CAAC,AACD,KAAK,eAAC,CAAC,AACL,KAAK,CAAE,CAAC,CACR,IAAI,CAAE,CAAC,CAAC,CAAC,CAAC,KAAK,CACf,UAAU,CAAE,IAAI,CAChB,OAAO,CAAE,IAAI,CAAC,GAAG,AACnB,CAAC,AACD,MAAM,eAAC,CAAC,AACN,KAAK,CAAE,CAAC,CACR,IAAI,CAAE,CAAC,CAAC,CAAC,CAAC,IAAI,CACd,UAAU,CAAE,IAAI,AAClB,CAAC;ACnBD,IAAI,eAAC,CAAC,AACJ,UAAU,CAAE,MAAM,CAClB,KAAK,CAAE,OAAO,AAChB,CAAC,AACD,MAAM,eAAC,CAAC,AACN,WAAW,CAAE,GAAG,CAChB,SAAS,CAAE,IAAI,CACf,MAAM,CAAE,GAAG,CAAC,CAAC,CAAC,IAAI,AACpB,CAAC,AACD,KAAK,eAAC,CAAC,AACL,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CAAC,CAAC,AAChB,CAAC;ACZD,IAAI,eAAC,CAAC,AACJ,OAAO,CAAE,GAAG,CAAC,IAAI,AACnB,CAAC;ACRD,KAAK,cAAC,CAAC,AACL,OAAO,CAAE,IAAI,CAAC,CAAC,AACjB,CAAC"
 }

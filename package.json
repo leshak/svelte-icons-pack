@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public"
+    "start": "sirv ./ -s"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "sirv-cli": "^1.0.0",
-    "svelte-icons-pack": "^1.4.2"
+    "svelte-icons-pack": "^1.4.2",
+    "svelte-routing": "^1.4.2"
   }
 }

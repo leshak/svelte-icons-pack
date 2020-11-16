@@ -1,34 +1,39 @@
 <script>
-  export let name;
+  import { Router, Link, Route } from "svelte-routing";
+
+  import LeftMenu from "./components/LeftMenu.svelte";
+  import MainPage from "./components/MainPage.svelte";
 </script>
 
 <style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
   }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+  .left {
+    order: 0;
+    flex: 0 1 250px;
+    align-self: auto;
+    padding: 24px 8px;
   }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
+  .right {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
   }
 </style>
 
-<main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the
-    <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-    to learn how to build Svelte apps.
-  </p>
-</main>
+<Router>
+  <div class="container">
+    <div class="left">
+      <LeftMenu />
+    </div>
+    <div class="right">
+      <MainPage />
+    </div>
+  </div>
+</Router>
