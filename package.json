@@ -2,9 +2,12 @@
   "name": "svelte-icons-pack-demo",
   "version": "1.0.2",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf assets/app && rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv ./ -s"
+    "start": "sirv ./ -s",
+    "pub": "npm version patch",
+    "version": "npm run build && git add -A assets",
+    "postversion": "git push && rm -rf assets/app"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
