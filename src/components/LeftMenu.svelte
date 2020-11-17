@@ -1,6 +1,33 @@
 <script>
   import SvelteLogo from "./SvelteLogo.svelte";
   import IconsManifest from "svelte-icons-pack/manifest";
+
+  function debounce(func, wait, immediate) {
+    var timeout;
+
+    return function executedFunction() {
+      var context = this;
+      var args = arguments;
+
+      var later = function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+
+      var callNow = immediate && !timeout;
+
+      clearTimeout(timeout);
+
+      timeout = setTimeout(later, wait);
+
+      if (callNow) func.apply(context, args);
+    };
+  }
+
+  var onChanged = debounce(function (ev) {
+    const searchVal = ev.target.value;
+    location.hash = "#/search/" + searchVal;
+  }, 500);
 </script>
 
 <style>
@@ -38,7 +65,9 @@
       <div class="title">svelte-icons-pack</div>
     </div>
   </a>
-  <div><input type="text" placeholder="Search icons" /></div>
+  <div>
+    <input type="text" placeholder="Search icons" on:input={onChanged} />
+  </div>
   <ul>
     {#each IconsManifest as item}
       <li><a href="#/pack/{item.path}">{item.name}</a></li>

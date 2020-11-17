@@ -13,6 +13,8 @@
     if (isPash && pageId === "pack") {
       // Pack
       appState.setPage(PAGE.PACK, pageParams);
+    } else if (isPash && pageId === "search") {
+      appState.setPage(PAGE.SEARCH, pageParams);
     } else {
       // Home
       appState.setPage(PAGE.HOME);

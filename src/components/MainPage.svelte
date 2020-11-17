@@ -1,5 +1,6 @@
 <script>
   import IconsPackPage from "../pages/IconsPackPage.svelte";
+  import SearchPage from "../pages/SearchPage.svelte";
   import Home from "./../pages/Home.svelte";
   import { appState, PAGE } from "./../state.js";
 
@@ -17,5 +18,7 @@
     <Home />
   {:else if $appState.page === PAGE.PACK}
     <IconsPackPage />
+  {:else if $appState.page === PAGE.SEARCH}
+    <SearchPage />
   {/if}
 </div>
