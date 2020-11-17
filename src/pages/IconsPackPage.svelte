@@ -10,13 +10,32 @@
 
   let ipack;
   let iconsList;
+  let notifyActive;
+  let copiedIconName;
+  let hideNotify;
 
   $: {
     ipack = IconsManifest.find((x) => x.path === $appState.param);
+  }
 
-    // console.log(IconsManifest);
-    // console.log($appState);
-    // console.log(ipack);
+  function onClickIcon(iconName) {
+    const copyText = document.getElementById("copy-input");
+    if (copyText) {
+      copyText.value = iconName;
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+
+      notifyActive = true;
+      copiedIconName = iconName;
+
+      clearTimeout(hideNotify);
+      hideNotify = setTimeout(() => {
+        notifyActive = false;
+      }, 5000);
+    }
   }
 </script>
 
@@ -26,10 +45,17 @@
   }
   h2 {
     font-weight: 400;
-    margin: 32px 0 8px;
+    margin: 32px 0 0;
   }
   td {
     padding: 4px 12px 4px 0;
+  }
+
+  #copy-input {
+    opacity: 0;
+    font-size: 2px;
+    padding: 0;
+    margin: 0;
   }
 
   .icons-list {
@@ -74,6 +100,27 @@
     bottom: -16px;
     overflow: hidden;
   }
+
+  .notify {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: -90px;
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+    padding: 7px 12px;
+    background-color: #ffffff;
+    border: 1px solid green;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition: top 0.3s;
+    font-size: 14px;
+  }
+
+  .notifyActive {
+    top: 25px;
+  }
 </style>
 
 {#if !!ipack}
@@ -97,9 +144,10 @@
     </div>
 
     <h2>Icons</h2>
+    <input id="copy-input" />
     <div class="icons-list">
       {#each Object.keys(ipack.icons) as ic}
-        <div class="icon-blk">
+        <div class="icon-blk" on:click={() => onClickIcon(ic)}>
           <div class="icon">
             <SvelteIcon src={ipack.icons[ic]} size={30} />
           </div>
@@ -108,4 +156,8 @@
       {/each}
     </div>
   </main>
+
+  <div class="notify" class:notifyActive>
+    Copied '{copiedIconName}' to clipboard
+  </div>
 {/if}
