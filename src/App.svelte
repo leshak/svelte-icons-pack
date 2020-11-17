@@ -1,8 +1,33 @@
 <script>
-  import { Router, Link, Route } from "svelte-routing";
+  import { onMount, onDestroy } from "svelte";
 
+  import { appState, PAGE } from "./state";
   import LeftMenu from "./components/LeftMenu.svelte";
   import MainPage from "./components/MainPage.svelte";
+
+  function urlHashChanged() {
+    const urlHash = location.hash;
+    // console.log("hash", urlHash);
+
+    const [isPash, pageId, pageParams] = urlHash.split("/");
+    if (isPash && pageId === "pack") {
+      // Pack
+      appState.setPage(PAGE.PACK, pageParams);
+    } else {
+      // Home
+      appState.setPage(PAGE.HOME);
+    }
+  }
+
+  onMount(() => {
+    window.addEventListener("hashchange", urlHashChanged, false);
+  });
+
+  onDestroy(() => {
+    window.removeEventListener("hashchange", urlHashChanged);
+  });
+
+  urlHashChanged();
 </script>
 
 <style>
@@ -27,13 +52,11 @@
   }
 </style>
 
-<Router>
-  <div class="container">
-    <div class="left">
-      <LeftMenu />
-    </div>
-    <div class="right">
-      <MainPage />
-    </div>
+<div class="container">
+  <div class="left">
+    <LeftMenu />
   </div>
-</Router>
+  <div class="right">
+    <MainPage />
+  </div>
+</div>

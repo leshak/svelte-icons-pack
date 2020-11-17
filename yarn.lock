@@ -596,11 +596,6 @@ svelte-icons-pack@^1.4.2:
   resolved "https://registry.yarnpkg.com/svelte-icons-pack/-/svelte-icons-pack-1.4.2.tgz#f713ae58bebf217fddbcdab550efaacddd00cda9"
   integrity sha512-Rg4dDf/sIBy59vsSmV49NsvSGVRPmhjuqftqVLW3XRf2pjGtrWGXd+AaBz5WIrHEqHbZzLazy510BcZIuSf4dw==
 
-svelte-routing@^1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/svelte-routing/-/svelte-routing-1.4.2.tgz#291160b537c9c73e711731eb099c48bb24cc3419"
-  integrity sha512-CSCKRLeOp9vjsDGGOEgL9DPm9HZLgZuTNehyTCl3K+6fCVH1Aw/K/WicavAVNcbsHmdR4wgF//0YVR9hrcdvGA==
-
 svelte@^3.0.0:
   version "3.29.7"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.29.7.tgz#e254eb2d0d609ce0fd60f052d444ac4a66d90f7d"

@@ -1,16 +1,21 @@
 <script>
-  import { Router, Link, Route } from "svelte-routing";
-  import Home from "../pages/Home.svelte";
   import IconsPackPage from "../pages/IconsPackPage.svelte";
+  import Home from "./../pages/Home.svelte";
+  import { appState, PAGE } from "./../state.js";
+
+  // $: console.log($appState);
 </script>
 
 <style>
-  main {
+  div {
     padding: 8px 24px;
   }
 </style>
 
-<main>
-  <Route path="/" component={Home} />
-  <Route path="pack/:packId" component={IconsPackPage} />
-</main>
+<div>
+  {#if $appState.page === PAGE.HOME}
+    <Home />
+  {:else if $appState.page === PAGE.PACK}
+    <IconsPackPage />
+  {/if}
+</div>

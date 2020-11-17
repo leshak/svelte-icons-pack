@@ -1,10 +1,12 @@
 <script>
-  import { Router, Link, Route } from "svelte-routing";
-
   import SvelteLogo from "./SvelteLogo.svelte";
+  import IconsManifest from "svelte-icons-pack/manifest";
 </script>
 
 <style>
+  nav {
+    width: 250px;
+  }
   .top {
     text-align: center;
     color: #444444;
@@ -18,19 +20,28 @@
     width: 100%;
     margin: 16px 0;
   }
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  li {
+    font-size: 16px;
+    padding: 7px 14px;
+  }
 </style>
 
 <nav>
-  <Link to="/">
+  <a href="#/">
     <div class="top">
       <SvelteLogo />
       <div class="title">svelte-icons-pack</div>
     </div>
-  </Link>
+  </a>
   <div><input type="text" placeholder="Search icons" /></div>
   <ul>
-    <li>
-      <Link to="pack/ai">Ant Design Icons</Link>
-    </li>
+    {#each IconsManifest as item}
+      <li><a href="#/pack/{item.path}">{item.name}</a></li>
+    {/each}
   </ul>
 </nav>
