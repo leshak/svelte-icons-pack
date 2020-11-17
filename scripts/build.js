@@ -10,6 +10,9 @@ const iconManifest = require("../manifest.json");
 
 // папка для сохранения .svelte файлов
 const outDir = path.resolve(__dirname, "../");
+const manifestFile = path.resolve(outDir, "manifest.js");
+
+const manifestInfo = {};
 
 const mkdir = promisify(fs.mkdir);
 const readdir = promisify(fs.readdir);
@@ -150,6 +153,14 @@ async function loadPack(iconPack) {
   console.log(" ...load:", iconPack.packName);
   console.log(" ...create folder:", iconPack.shortName);
 
+  manifestInfo[iconPack.shortName] = {
+    iconsList: [],
+    name: iconPack.packName,
+    path: iconPack.shortName,
+    license: iconPack.license,
+    sourceUrl: iconPack.url,
+  };
+
   const packFolder = path.resolve(outDir, iconPack.shortName);
   await mkdir(packFolder);
 
@@ -182,27 +193,29 @@ async function loadPack(iconPack) {
   // const svgIndexFile = path.resolve(packFolder, "index.js");
   // console.log(" ...file: ", svgIndexFile);
 
-  const iconsList = [];
   for (const item of folders) {
     const svgList = await loadSvgFilesList(item);
 
     for (const svgFile of svgList) {
-      iconsList.push(svgFile.svgName);
+      manifestInfo[iconPack.shortName].iconsList.push(svgFile.svgName);
 
       const iconData = await generateSvg(iconPack, svgFile);
       const svgAsJs = generateSvgIconInfo(svgFile.svgName, iconData);
 
       writeFile(path.resolve(packFolder, `${svgFile.svgName}.js`), svgAsJs);
 
-      // appendFile(svgIndexFile, svgAsJs);
-      // appendFile(svgIndexFile, "\n\n");
+      await appendFile(
+        manifestFile,
+        `import ${svgFile.svgName} from './${iconPack.shortName}/${svgFile.svgName}';\n`
+      );
     }
   }
-
-  // appendFile(svgIndexFile, `module.exports = {${iconsList.join(", ")}}`);
 }
 
 async function init() {
+  // manifest.js
+  writeFile(manifestFile, "// manifest.js file\n");
+
   // clean folders from manifest
   console.log("Clean icons pack folders");
   for (const iconPack of iconManifest) {
@@ -211,32 +224,100 @@ async function init() {
   }
 }
 
+// async function generateSvelteIconComponent() {
+//   writeFile(
+//     path.resolve(outDir, "Icon.svelte"),
+//     `<script>
+//   export let src;
+//   export let size = "1em";
+//   export let color = undefined;
+//   export let title = undefined;
+//   export let className = '';
+// </script>
+
+// <svg
+//   width={size}
+//   height={size}
+//   stroke-width="0"
+//   class={className}
+//   {...src.a}
+//   xmlns="http://www.w3.org/2000/svg">
+//   {#if title}
+//     <title>{title}</title>
+//   {/if}
+//   <g stroke={color || 'currentColor'} fill={color || 'currentColor'}>
+//     {@html src.c}
+//   </g>
+// </svg>`
+//   );
+// }
+
 async function generateSvelteIconComponent() {
   writeFile(
     path.resolve(outDir, "Icon.svelte"),
     `<script>
-  export let src;
-  export let size = "1em";
-  export let color = undefined;
-  export let title = undefined;
-  export let className = '';
+export let src;
+export let size = "1em";
+export let color = undefined;
+export let title = undefined;
+export let className = "";
+
+let innerHtml;
+let attr;
+$: {
+  attr = {};
+  if (color) {
+    if (src.a.stroke !== "none") {
+      attr.stroke = color;
+    }
+    if (src.a.fill !== "none") {
+      attr.fill = color;
+    }
+  }
+}
+
+$: {
+  innerHtml = (title ? \`<title>\${title}</title>\` : "") + src.c;
+}
 </script>
 
 <svg
-  width={size}
-  height={size}
-  stroke-width="0"
-  class={className}
-  {...src.a}
-  xmlns="http://www.w3.org/2000/svg">
-  {#if title}
-    <title>{title}</title>
-  {/if}
-  <g stroke={color || 'currentColor'} fill={color || 'currentColor'}>
-    {@html src.c}
-  </g>
-</svg>`
+width={size}
+height={size}
+stroke-width="0"
+class={className}
+{...src.a}
+{...attr}
+xmlns="http://www.w3.org/2000/svg">
+{@html innerHtml}
+</svg>
+`
   );
+}
+//   stroke={color || 'currentColor'} fill={color || 'currentColor'}
+
+async function generateIconsManifest() {
+  await appendFile(manifestFile, "\n\nexport default [\n");
+
+  for (const pk of Object.keys(manifestInfo)) {
+    const pack = manifestInfo[pk];
+    await appendFile(manifestFile, "  {\n");
+
+    for (const prop of Object.keys(pack)) {
+      if (prop === "iconsList") {
+        await appendFile(
+          manifestFile,
+          `    icons: {${pack.iconsList.join(", ")}},\n`
+        );
+      } else {
+        await appendFile(manifestFile, `    ${prop}: '${pack[prop]}',\n`);
+      }
+    }
+
+    await appendFile(manifestFile, "  },\n");
+  }
+
+  await appendFile(manifestFile, "];\n");
 }
 
 async function main() {
@@ -244,10 +325,15 @@ async function main() {
   await init();
 
   console.log("Start loading SVG icons...");
-  for (const iconPack of iconManifest) {
+  for (const iconPack of iconManifest.sort((x1, x2) => {
+    if (x1.packName > x2.packName) return 1;
+    if (x1.packName < x2.packName) return -1;
+    return 0;
+  })) {
     await loadPack(iconPack);
   }
 
+  await generateIconsManifest();
   await generateSvelteIconComponent();
 
   console.log("Done!");

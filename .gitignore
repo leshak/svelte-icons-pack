@@ -5,6 +5,7 @@ dist
 
 # icons
 Icon.svelte
+manifest.js
 ai
 fa
 wi

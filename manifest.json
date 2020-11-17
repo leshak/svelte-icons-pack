@@ -2,18 +2,24 @@
   {
     "shortName": "ai",
     "packName": "Ant Design SVG icons",
+    "license": "MIT",
+    "url": "https://github.com/ant-design/ant-design-icons",
     "iconsPath": "./src/icons/ant-design-icons/packages/icons-svg/svg",
     "subFolders": true
   },
   {
     "shortName": "fa",
     "packName": "Font Awesome",
+    "license": "CC BY 4.0 License",
+    "url": "https://fontawesome.com/",
     "iconsPath": "./src/icons/Font-Awesome/svgs",
     "subFolders": true
   },
   {
     "shortName": "wi",
     "packName": "Weather Icons",
+    "license": "SIL OFL 1.1",
+    "url": "https://erikflowers.github.io/weather-icons/",
     "iconsPath": "./src/icons/weather-icons/svg",
     "subFolders": false,
     "removeMainPrefix": true
@@ -21,12 +27,16 @@
   {
     "shortName": "fi",
     "packName": "Feather",
+    "license": "MIT",
+    "url": "https://feathericons.com/",
     "iconsPath": "./src/icons/feather/icons",
     "subFolders": false
   },
   {
     "shortName": "vsc",
     "packName": "VS Code Icons",
+    "license": "CC BY 4.0",
+    "url": "https://github.com/microsoft/vscode-codicons",
     "iconsPath": "./src/icons/vscode-codicons/src/icons",
     "subFolders": false
   }

@@ -5,3 +5,4 @@ src
 scripts
 .gitmodules
 manifest.json
+manifest.js
