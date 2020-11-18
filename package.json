@@ -1,6 +1,6 @@
 {
   "name": "svelte-icons-pack-demo",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "scripts": {
     "build": "rollup -c",
     "dev": "rm -rf assets/app && rollup -c -w",
