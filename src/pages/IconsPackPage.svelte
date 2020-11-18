@@ -65,6 +65,6 @@
       </table>
     </div>
 
-    <IconsTable iconsList={Object.keys(ipack.icons)} />
+    <IconsTable iconsList={Object.keys(ipack.icons).sort()} />
   </main>
 {/if}

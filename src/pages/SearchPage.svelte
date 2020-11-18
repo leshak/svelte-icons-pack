@@ -20,4 +20,4 @@
   }
 </script>
 
-<IconsTable title="Found {foundList.length} icons" iconsList={foundList} />
+<IconsTable title="Found {foundList.length} icons" iconsList={foundList.sort()} />

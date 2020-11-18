@@ -208,7 +208,7 @@
 <h2>{title}</h2>
 <input id="copy-input" />
 <div class="icons-list">
-  {#each iconsList.sort() as ic}
+  {#each iconsList as ic}
     <div
       class="icon-blk"
       on:click={() => onClickIcon(ic)}
