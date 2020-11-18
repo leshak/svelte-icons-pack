@@ -1,4 +1,5 @@
 <script>
+  import { appState } from "./../state.js";
   import SvelteLogo from "./SvelteLogo.svelte";
   import IconsManifest from "svelte-icons-pack/manifest";
 
@@ -42,19 +43,37 @@
     font-weight: 400;
     font-size: 25px;
     margin: 8px 0 16px;
+    color: #ff3e00;
   }
   input {
     width: 100%;
     margin: 16px 0;
+    border-radius: 5px;
+    padding: 7px 12px;
+  }
+  input:focus {
+    outline-color: #ff3e00;
+    outline-width: 1px;
   }
   ul {
     padding: 0;
     margin: 0;
     list-style: none;
   }
-  li {
+  .liActive {
+    border-color: #ff3e00 !important;
+  }
+  a.icon-pack {
+    color: #444444;
+    display: block;
     font-size: 16px;
-    padding: 7px 14px;
+    padding: 12px 14px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+  }
+  a.icon-pack:hover {
+    background-color: rgb(255, 62, 0, 0.03);
+    border-color: rgb(255, 62, 0, 0.2);
   }
 </style>
 
@@ -70,7 +89,16 @@
   </div>
   <ul>
     {#each IconsManifest as item}
-      <li><a href="#/pack/{item.path}">{item.name}</a></li>
+      <li>
+        <a
+          href="#/pack/{item.path}"
+          class="icon-pack"
+          class:liActive={item.path === $appState.param}>{item.name}</a>
+      </li>
     {/each}
   </ul>
 </nav>
+<!-- This png 1x1 is used to count the number of site visitors -->
+<img
+  src="https://xyz.fishbla.com/pixel.png?app_key=65a84ba9ffa23aaf5f6d2ba339949dfc1c9b8de8&begin_session=1"
+  alt="analytics" />

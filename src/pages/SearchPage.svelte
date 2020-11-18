@@ -10,10 +10,14 @@
   }
 
   $: {
-    foundList = iconsNameList.filter((x) => {
-      return x.toLowerCase().indexOf($appState.param.toLowerCase()) >= 0;
-    });
+    if ($appState.param) {
+      foundList = iconsNameList.filter((x) => {
+        return x.toLowerCase().indexOf($appState.param.toLowerCase()) >= 0;
+      });
+    } else {
+      foundList = [];
+    }
   }
 </script>
 
-<IconsTable title="Found" iconsList={foundList} />
+<IconsTable title="Found {foundList.length} icons" iconsList={foundList} />
