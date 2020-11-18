@@ -1,13 +1,24 @@
 node_modules
-dist
+.vscode
 .DS_Store
 *.log
 
-# icons
+# Icons
 Icon.svelte
 manifest.js
+
+# Packs
 ai
-fa
-wi
+bs
+bi
 fi
+fa
+hi
+im
+io
+ri
+si
+ti
 vsc
+wi
+cg
