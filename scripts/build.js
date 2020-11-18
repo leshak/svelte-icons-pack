@@ -11,6 +11,7 @@ const iconManifest = require("../manifest.json");
 // папка для сохранения .svelte файлов
 const outDir = path.resolve(__dirname, "../");
 const manifestFile = path.resolve(outDir, "manifest.js");
+const gitignoreFile = path.resolve(outDir, ".gitignore");
 
 const manifestInfo = {};
 
@@ -25,23 +26,41 @@ function capitalizeFirstLetter(_string) {
   const fixName = {
     filled: "fill",
     outlined: "outline",
+    regular: "",
+    logos: "logo",
   };
-  const string = fixName[_string] || _string;
+  const string = fixName[_string] !== undefined ? fixName[_string] : _string;
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-async function loadSvgFilesList({ svgPath, prefix }) {
+async function loadSvgFilesList({ svgPath, prefix }, iconPack) {
   const list = await readdir(svgPath);
   const outList = [];
 
   for (const f of list) {
-    const fp = f.split(".");
-    if (fp.length === 2 && fp[1].toLowerCase() === "svg") {
+    const [_fileName, fileExt] = f.split(".");
+    if (fileExt && fileExt.toLowerCase() === "svg") {
+      let fileName = _fileName;
+      if (
+        Array.isArray(iconPack.removeFilePrefixes) &&
+        iconPack.removeFilePrefixes.length > 0
+      ) {
+        for (const pfix of iconPack.removeFilePrefixes) {
+          if (pfix && fileName.indexOf(pfix) === 0) {
+            fileName = fileName.substring(pfix.length);
+          }
+        }
+      }
+
+      if (iconPack.removeFirtsCharsFromFile > 0) {
+        fileName = fileName.substring(iconPack.removeFirtsCharsFromFile);
+      }
+
       outList.push({
         filePath: path.resolve(svgPath, f),
         svgName:
           prefix +
-          fp[0]
+          fileName
             .split("-")
             .map((x) => capitalizeFirstLetter(x))
             .join(""),
@@ -153,6 +172,8 @@ async function loadPack(iconPack) {
   console.log(" ...load:", iconPack.packName);
   console.log(" ...create folder:", iconPack.shortName);
 
+  appendFile(gitignoreFile, `${iconPack.shortName}\n`);
+
   manifestInfo[iconPack.shortName] = {
     iconsList: [],
     name: iconPack.packName,
@@ -194,7 +215,7 @@ async function loadPack(iconPack) {
   // console.log(" ...file: ", svgIndexFile);
 
   for (const item of folders) {
-    const svgList = await loadSvgFilesList(item);
+    const svgList = await loadSvgFilesList(item, iconPack);
 
     for (const svgFile of svgList) {
       manifestInfo[iconPack.shortName].iconsList.push(svgFile.svgName);
@@ -216,6 +237,12 @@ async function init() {
   // manifest.js
   writeFile(manifestFile, "// manifest.js file\n");
 
+  // .gitignore
+  writeFile(
+    gitignoreFile,
+    "node_modules\n.vscode\n.DS_Store\n*.log\n\n# Icons\nIcon.svelte\nmanifest.js\n\n# Packs\n"
+  );
+
   // clean folders from manifest
   console.log("Clean icons pack folders");
   for (const iconPack of iconManifest) {
@@ -223,34 +250,6 @@ async function init() {
     await rimrafFolder(iconPack.shortName);
   }
 }
-
-// async function generateSvelteIconComponent() {
-//   writeFile(
-//     path.resolve(outDir, "Icon.svelte"),
-//     `<script>
-//   export let src;
-//   export let size = "1em";
-//   export let color = undefined;
-//   export let title = undefined;
-//   export let className = '';
-// </script>
-
-// <svg
-//   width={size}
-//   height={size}
-//   stroke-width="0"
-//   class={className}
-//   {...src.a}
-//   xmlns="http://www.w3.org/2000/svg">
-//   {#if title}
-//     <title>{title}</title>
-//   {/if}
-//   <g stroke={color || 'currentColor'} fill={color || 'currentColor'}>
-//     {@html src.c}
-//   </g>
-// </svg>`
-//   );
-// }
 
 async function generateSvelteIconComponent() {
   writeFile(
