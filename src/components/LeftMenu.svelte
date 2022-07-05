@@ -98,7 +98,3 @@
     {/each}
   </ul>
 </nav>
-<!-- This png 1x1 is used to count the number of site visitors -->
-<img
-  src="https://xyz.fishbla.com/pixel.png?app_key=65a84ba9ffa23aaf5f6d2ba339949dfc1c9b8de8&begin_session=1"
-  alt="analytics" />
