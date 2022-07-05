@@ -1,6 +1,6 @@
 {
   "name": "svelte-icons-pack",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "Svg icons as Svelte components with props",
   "main": "Icon.svelte",
   "license": "MIT",
@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/leshak/svelte-icons-pack#readme",
   "devDependencies": {
-    "camelcase": "^6.2.0",
-    "cheerio": "^1.0.0-rc.3",
-    "javascript-stringify": "^2.0.1",
+    "camelcase": "^6.3.0",
+    "cheerio": "1.0.0-rc.3",
+    "javascript-stringify": "^2.1.0",
     "rimraf": "^3.0.2"
   }
 }
