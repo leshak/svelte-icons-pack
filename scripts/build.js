@@ -1,12 +1,14 @@
-const cheerio = require("cheerio");
-const path = require("path");
-const fs = require("fs");
-const camelcase = require("camelcase");
-const rimraf = require("rimraf");
-const { stringify } = require("javascript-stringify");
-const { promisify } = require("util");
+import cheerio from "cheerio";
+import path from "path";
+import { fileURLToPath } from "url";
+import fs from "fs";
+import rimraf from "rimraf";
+import { stringify } from "javascript-stringify";
+import { promisify } from "util";
+import iconManifest from "../manifest.json" assert { type: "json" };
 
-const iconManifest = require("../manifest.json");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // папка для сохранения .svelte файлов
 const outDir = path.resolve(__dirname, "../");
@@ -18,7 +20,6 @@ const manifestInfo = {};
 const mkdir = promisify(fs.mkdir);
 const readdir = promisify(fs.readdir);
 const writeFile = promisify(fs.writeFile);
-const copyFile = promisify(fs.copyFile);
 const appendFile = promisify(fs.appendFile);
 const rimrafFolder = promisify(rimraf);
 
