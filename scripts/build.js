@@ -14,6 +14,7 @@ const __dirname = path.dirname(__filename);
 const outDir = path.resolve(__dirname, "../");
 const manifestFile = path.resolve(outDir, "manifest.js");
 const gitignoreFile = path.resolve(outDir, ".gitignore");
+const tsconfigFile = path.resolve(outDir, "tsconfig.json");
 
 const manifestInfo = {};
 
@@ -320,6 +321,22 @@ async function generateIconsManifest() {
   await appendFile(manifestFile, "];\n");
 }
 
+async function generateTSConfig() {
+  console.log("Generating tsconfig.json ...");
+  const paths = Object.values(manifestInfo).map(pack => `"./${pack.path}/*.js"`).join(", ");
+  writeFile(tsconfigFile,
+    `{
+  "include": [${paths}],
+  "exclude": ["./im/ImPagebreak.js"],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+  }
+}
+`
+  );
+}
 async function main() {
   console.log("Init...");
   await init();
@@ -335,6 +352,7 @@ async function main() {
 
   await generateIconsManifest();
   await generateSvelteIconComponent();
+  await generateTSConfig();
 
   console.log("Done!");
 }

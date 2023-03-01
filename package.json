@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "submodule": "git submodule update --init",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js && tsc"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,8 @@
     "camelcase": "^6.3.0",
     "cheerio": "1.0.0-rc.3",
     "javascript-stringify": "^2.1.0",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.5"
   },
   "type": "module"
 }
