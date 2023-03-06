@@ -2,7 +2,6 @@
   "name": "svelte-icons-pack",
   "version": "2.1.0",
   "description": "Svg icons as Svelte components with props",
-  "main": "Icon.svelte",
   "license": "MIT",
   "scripts": {
     "submodule": "git submodule update --init",

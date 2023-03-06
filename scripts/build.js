@@ -15,6 +15,7 @@ const outDir = path.resolve(__dirname, "../");
 const manifestFile = path.resolve(outDir, "manifest.js");
 const gitignoreFile = path.resolve(outDir, ".gitignore");
 const tsconfigFile = path.resolve(outDir, "tsconfig.json");
+const tsIndexFile = path.resolve(outDir, "index.ts");
 
 const manifestInfo = {};
 
@@ -211,7 +212,7 @@ async function loadPack(iconPack) {
     });
   }
 
-  console.log(` ...generate svelte componets for: "${iconPack.packName}"`);
+  console.log(` ...generate svelte components for: "${iconPack.packName}"`);
 
   // const svgIndexFile = path.resolve(packFolder, "index.js");
   // console.log(" ...file: ", svgIndexFile);
@@ -337,6 +338,25 @@ async function generateTSConfig() {
 `
   );
 }
+
+async function generateIndexFiles() {
+  console.log("Generating index.ts ...");
+  await writeFile(
+    tsIndexFile,
+    `
+export { default as Icon } from "./Icon.svelte";
+`
+  );
+  for (const pack of Object.values(manifestInfo)) {
+    for (const iconName of pack.iconsList) {
+      await appendFile(
+        tsIndexFile,
+        `export { default as ${iconName} } from "./${pack.path}/${iconName}";\n`
+      );
+    }
+  }
+}
+
 async function main() {
   console.log("Init...");
   await init();
@@ -353,6 +373,7 @@ async function main() {
   await generateIconsManifest();
   await generateSvelteIconComponent();
   await generateTSConfig();
+  await generateIndexFiles();
 
   console.log("Done!");
 }
