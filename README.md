@@ -1,9 +1,9 @@
 # Svelte Icons Pack
 
-Based on https://github.com/react-icons/react-icons)
+Based on https://github.com/react-icons/react-icons
 
 ## Demo page
-https://leshak.github.io/svelte-icons-pack/#/
+https://leshak.github.io/svelte-icons-pack/
 
 ## Installation
 
