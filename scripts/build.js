@@ -259,6 +259,7 @@ async function generateSvelteIconComponent() {
     `<script>
 export let src;
 export let size = "1em";
+export let viewBox = undefined;
 export let color = undefined;
 export let title = undefined;
 export let className = "";
@@ -285,6 +286,7 @@ $: {
 <svg
 width={size}
 height={size}
+viewBox={viewBox}
 stroke-width="0"
 class={className}
 {...src.a}

@@ -67,7 +67,7 @@ You can configure icons props using
   }
 </style>
 
-<Icon src={AiOutlineNodeExpand} color="red" size="64" className="custom-icon" title="Custom icon params" />
+<Icon src={AiOutlineNodeExpand} color="red" size="64" viewBox="0 0 1024 1024" className="custom-icon" title="Custom icon params" />
 ```
 
 | Key         | Default               | Notes                              |
@@ -75,8 +75,9 @@ You can configure icons props using
 | `src`       | `SvgIcon`             |                                    |
 | `color`     | `undefined` (inherit) |                                    |
 | `size`      | `1em`                 |                                    |
+| `viewBox`   | `undefined`           | SVG [`viewBox`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox) attribute used if the underlying icon set does nots specify a `viewBox` per SVG. |
 | `className` | `undefined`           |                                    |
-| `title`     | `undefined`           | Icon description for accessibility |
+| `title`     | `undefined`           | Icon description for accessibility. |
 
 ## Licence
 
