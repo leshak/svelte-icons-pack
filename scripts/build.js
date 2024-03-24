@@ -256,43 +256,43 @@ async function init() {
 async function generateSvelteIconComponent() {
   writeFile(
     path.resolve(outDir, "Icon.svelte"),
-    `<script>
-export let src;
-export let size = "1em";
-export let viewBox = undefined;
-export let color = undefined;
-export let title = undefined;
-export let className = "";
+    `<script lang="ts">
+  export let src: any;
+  export let size: string | number = "1em";
+  export let viewBox: string = undefined;
+  export let color: string = undefined;
+  export let title: string = undefined;
+  export let className: string = "";
 
-let innerHtml;
-let attr;
-$: {
-  attr = {};
-  if (color) {
-    if (src.a.stroke !== "none") {
-      attr.stroke = color;
-    }
-    if (src.a.fill !== "none") {
-      attr.fill = color;
+  let innerHtml: string;
+  let attr: any = {};
+  $: {
+    attr = {};
+    if (color) {
+      if (src.a.stroke !== "none") {
+        attr.stroke = color;
+      }
+      if (src.a.fill !== "none") {
+        attr.fill = color;
+      }
     }
   }
-}
 
-$: {
-  innerHtml = (title ? \`<title>\${title}</title>\` : "") + src.c;
-}
+  $: {
+    innerHtml = (title ? \`<title>\${title}</title>\` : "") + src.c;
+  }
 </script>
 
 <svg
-width={size}
-height={size}
-viewBox={viewBox}
-stroke-width="0"
-class={className}
-{...src.a}
-{...attr}
-xmlns="http://www.w3.org/2000/svg">
-{@html innerHtml}
+  width={size}
+  height={size}
+  viewBox={viewBox}
+  stroke-width="0"
+  class={className}
+  {...src.a}
+  {...attr}
+  xmlns="http://www.w3.org/2000/svg">
+  {@html innerHtml}
 </svg>
 `
   );
@@ -325,8 +325,11 @@ async function generateIconsManifest() {
 
 async function generateTSConfig() {
   console.log("Generating tsconfig.json ...");
-  const paths = Object.values(manifestInfo).map(pack => `"./${pack.path}/*.js"`).join(", ");
-  writeFile(tsconfigFile,
+  const paths = Object.values(manifestInfo)
+    .map((pack) => `"./${pack.path}/*.js"`)
+    .join(", ");
+  writeFile(
+    tsconfigFile,
     `{
   "include": [${paths}],
   "exclude": ["./im/ImPagebreak.js"],
