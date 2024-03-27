@@ -16,22 +16,6 @@
       "types": "./dist/ai/index.d.ts",
       "svelte": "./dist/ai/index.js"
     },
-    "./fa": {
-      "types": "./dist/fa/index.d.ts",
-      "svelte": "./dist/fa/index.js"
-    },
-    "./wi": {
-      "types": "./dist/wi/index.d.ts",
-      "svelte": "./dist/wi/index.js"
-    },
-    "./fi": {
-      "types": "./dist/fi/index.d.ts",
-      "svelte": "./dist/fi/index.js"
-    },
-    "./vsc": {
-      "types": "./dist/vsc/index.d.ts",
-      "svelte": "./dist/vsc/index.js"
-    },
     "./bs": {
       "types": "./dist/bs/index.d.ts",
       "svelte": "./dist/bs/index.js"
@@ -39,6 +23,26 @@
     "./bi": {
       "types": "./dist/bi/index.d.ts",
       "svelte": "./dist/bi/index.js"
+    },
+    "./ci": {
+      "types": "./dist/ci/index.d.ts",
+      "svelte": "./dist/ci/index.js"
+    },
+    "./fi": {
+      "types": "./dist/fi/index.d.ts",
+      "svelte": "./dist/fi/index.js"
+    },
+    "./fa": {
+      "types": "./dist/fa/index.d.ts",
+      "svelte": "./dist/fa/index.js"
+    },
+    "./oi": {
+      "types": "./dist/oi/index.d.ts",
+      "svelte": "./dist/oi/index.js"
+    },
+    "./hi": {
+      "types": "./dist/hi/index.d.ts",
+      "svelte": "./dist/hi/index.js"
     },
     "./im": {
       "types": "./dist/im/index.d.ts",
@@ -48,6 +52,10 @@
       "types": "./dist/io/index.d.ts",
       "svelte": "./dist/io/index.js"
     },
+    "./lu": {
+      "types": "./dist/lu/index.d.ts",
+      "svelte": "./dist/lu/index.js"
+    },
     "./ri": {
       "types": "./dist/ri/index.d.ts",
       "svelte": "./dist/ri/index.js"
@@ -56,13 +64,25 @@
       "types": "./dist/si/index.d.ts",
       "svelte": "./dist/si/index.js"
     },
+    "./sl": {
+      "types": "./dist/sl/index.d.ts",
+      "svelte": "./dist/sl/index.js"
+    },
+    "./tr": {
+      "types": "./dist/tr/index.d.ts",
+      "svelte": "./dist/tr/index.js"
+    },
     "./ti": {
       "types": "./dist/ti/index.d.ts",
       "svelte": "./dist/ti/index.js"
     },
-    "./hi": {
-      "types": "./dist/hi/index.d.ts",
-      "svelte": "./dist/hi/index.js"
+    "./vsc": {
+      "types": "./dist/vsc/index.d.ts",
+      "svelte": "./dist/vsc/index.js"
+    },
+    "./wi": {
+      "types": "./dist/wi/index.d.ts",
+      "svelte": "./dist/wi/index.js"
     },
     "./cg": {
       "types": "./dist/cg/index.d.ts",

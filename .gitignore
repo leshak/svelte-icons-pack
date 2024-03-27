@@ -15,16 +15,21 @@ src/manifest.ts
 
 // THIS PART IS AUTO GENERATED
 src/lib/ai/**
-src/lib/fa/**
-src/lib/wi/**
-src/lib/fi/**
-src/lib/vsc/**
 src/lib/bs/**
 src/lib/bi/**
+src/lib/ci/**
+src/lib/fi/**
+src/lib/fa/**
+src/lib/oi/**
+src/lib/hi/**
 src/lib/im/**
 src/lib/io/**
+src/lib/lu/**
 src/lib/ri/**
 src/lib/si/**
+src/lib/sl/**
+src/lib/tr/**
 src/lib/ti/**
-src/lib/hi/**
+src/lib/vsc/**
+src/lib/wi/**
 src/lib/cg/**
