@@ -96,7 +96,7 @@
     "format": "prettier --write .",
     "release": "npm version patch",
     "version": "npm run build:icons && git add . && npm run build && git add -A demo",
-    "p1ostversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags"
   },
   "peerDependencies": {
     "svelte": "^3.44.0 || ^4.0.0 || ^5.0.0-next.1"
