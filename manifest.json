@@ -158,11 +158,31 @@
   {
     "shortName": "oi",
     "version": "19.9.0",
-    "packName": "octicons",
+    "packName": "Github Octicons icons",
     "license": "MIT",
     "licenseUrl": "https://github.com/primer/octicons/blob/main/LICENSE",
     "url": "https://github.com/primer/octicons",
     "iconsPath": "./icons/octicons/icons",
+    "subFolders": false
+  },
+  {
+    "shortName": "lu",
+    "version": "0.363.0",
+    "packName": "Lucide",
+    "license": "ISC",
+    "licenseUrl": "https://github.com/lucide-icons/lucide/blob/main/LICENSE",
+    "url": "https://github.com/lucide-icons/lucide",
+    "iconsPath": "./icons/lucide/icons",
+    "subFolders": false
+  },
+  {
+    "shortName": "sl",
+    "version": "2.5.5",
+    "packName": "Simple Line Icons",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/thesabbir/simple-line-icons/blob/master/LICENSE.md",
+    "url": "https://github.com/thesabbir/simple-line-icons",
+    "iconsPath": "./icons/simple-line-icons/src/svgs",
     "subFolders": false
   }
 ]

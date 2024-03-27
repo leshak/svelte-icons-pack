@@ -46,3 +46,9 @@
 [submodule "icons/octicons"]
 	path = icons/octicons
 	url = https://github.com/primer/octicons.git
+[submodule "icons/lucide"]
+	path = icons/lucide
+	url = https://github.com/lucide-icons/lucide.git
+[submodule "icons/simple-line-icons"]
+	path = icons/simple-line-icons
+	url = https://github.com/thesabbir/simple-line-icons.git
