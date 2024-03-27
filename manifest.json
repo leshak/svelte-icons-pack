@@ -154,5 +154,15 @@
     "url": "https://github.com/Klarr-Agency/Circum-icons",
     "iconsPath": "./icons/Circum-Icons/svg",
     "subFolders": false
+  },
+  {
+    "shortName": "oi",
+    "version": "19.9.0",
+    "packName": "octicons",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/primer/octicons/blob/main/LICENSE",
+    "url": "https://github.com/primer/octicons",
+    "iconsPath": "./icons/octicons/icons",
+    "subFolders": false
   }
 ]

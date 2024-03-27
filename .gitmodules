@@ -43,3 +43,6 @@
 [submodule "icons/Circum-Icons"]
 	path = icons/Circum-Icons
 	url = https://github.com/Klarr-Agency/Circum-Icons.git
+[submodule "icons/octicons"]
+	path = icons/octicons
+	url = https://github.com/primer/octicons.git
