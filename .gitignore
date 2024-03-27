@@ -11,6 +11,8 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 tmp
 .vscode
+src/manifest.ts
+
 
 // THIS PART IS AUTO GENERATED
 src/lib/ai/**
