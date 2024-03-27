@@ -19,8 +19,9 @@
 		activeIconPath = pageData?.icons[0]?.p || pageData?.path;
 	}
 
-	function onSelelectIcon(name: string) {
+	function onSelelectIcon(name: string, path: string) {
 		activeIcon = name;
+		activeIconPath = path;
 		copyToClipboard(name);
 		onNotify(`Copied ${name} to clipboard`);
 	}
@@ -128,7 +129,10 @@
 				</h2>
 				<div class="flex flex-wrap gap-4">
 					{#each pageData.icons as it}
-						<button class="w-[88px] overflow-hidden" on:click={() => onSelelectIcon(it.n)}>
+						<button
+							class="w-[88px] overflow-hidden"
+							on:click={() => onSelelectIcon(it.n, it.p ?? pageData?.path ?? '')}
+						>
 							<div
 								class="w-[88px] h-[68px] flex justify-center border rounded-lg hover:border-[#ff3e00]/10
             hover:bg-[#ff3e00]/5 hover:text-[ff3e00] {it.n === activeIcon
