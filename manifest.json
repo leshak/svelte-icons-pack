@@ -184,5 +184,15 @@
     "url": "https://github.com/thesabbir/simple-line-icons",
     "iconsPath": "./icons/simple-line-icons/src/svgs",
     "subFolders": false
+  },
+  {
+    "shortName": "tr",
+    "version": "3.1.0",
+    "packName": "Tabler Icons",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/tabler/tabler-icons/blob/main/LICENSE",
+    "url": "https://github.com/tabler/tabler-icons",
+    "iconsPath": "./icons/tabler-icons/icons",
+    "subFolders": true
   }
 ]

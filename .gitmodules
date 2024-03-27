@@ -52,3 +52,6 @@
 [submodule "icons/simple-line-icons"]
 	path = icons/simple-line-icons
 	url = https://github.com/thesabbir/simple-line-icons.git
+[submodule "icons/tabler-icons"]
+	path = icons/tabler-icons
+	url = https://github.com/tabler/tabler-icons.git
