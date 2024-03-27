@@ -18,9 +18,16 @@ async function main() {
 	console.clear();
 	log(color.green('Building icons...\n\n'));
 
+	// sort sources
+	const sortedSources = iconsSources.sort((a, b) => {
+		if (a.packName < b.packName) return -1;
+		if (a.packName > b.packName) return 1;
+		return 0;
+	});
+
 	log(color.white(`  ${color.gray('┌')} Loading files list...\n`));
 	log(color.white(`  ${color.gray('│')}\n`));
-	const worksList = await loadFilesList(iconsSources);
+	const worksList = await loadFilesList(sortedSources);
 
 	log(color.white(`  ${color.gray('│')}\n`));
 	log(color.white(`  ${color.gray('│')}\n`));
