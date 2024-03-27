@@ -1,0 +1,148 @@
+[
+  {
+    "shortName": "ai",
+    "version": "4.4.2",
+    "packName": "Ant Design SVG icons",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/ant-design/ant-design-icons/blob/master/LICENSE",
+    "url": "https://github.com/ant-design/ant-design-icons",
+    "iconsPath": "./icons/ant-design-icons/packages/icons-svg/svg",
+    "subFolders": true
+  },
+  {
+    "shortName": "fa",
+    "version": "6.5.1",
+    "packName": "Font Awesome",
+    "license": "CC BY 4.0 License",
+    "licenseUrl": "https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt",
+    "url": "https://fontawesome.com/",
+    "iconsPath": "./icons/Font-Awesome/svgs",
+    "subFolders": true
+  },
+  {
+    "shortName": "wi",
+    "version": "2.0.12",
+    "packName": "Weather Icons",
+    "license": "SIL OFL 1.1",
+    "licenseUrl": "https://openfontlicense.org/",
+    "url": "https://erikflowers.github.io/weather-icons/",
+    "iconsPath": "./icons/weather-icons/svg",
+    "subFolders": false,
+    "removeMainPrefix": true
+  },
+  {
+    "shortName": "fi",
+    "version": "4.29.1",
+    "packName": "Feather",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/feathericons/feather/blob/master/LICENSE",
+    "url": "https://feathericons.com/",
+    "iconsPath": "./icons/feather/icons",
+    "subFolders": false
+  },
+  {
+    "shortName": "vsc",
+    "version": "0.0.35",
+    "packName": "VS Code Icons",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://github.com/microsoft/vscode-codicons/blob/main/LICENSE",
+    "url": "https://github.com/microsoft/vscode-codicons",
+    "iconsPath": "./icons/vscode-codicons/src/icons",
+    "subFolders": false
+  },
+  {
+    "shortName": "bs",
+    "version": "1.11.3",
+    "packName": "Bootstrap Icons",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/twbs/icons/blob/master/LICENSE",
+    "url": "https://github.com/twbs/icons",
+    "iconsPath": "./icons/icons/icons",
+    "subFolders": false
+  },
+  {
+    "shortName": "bi",
+    "version": "2.1.4",
+    "packName": "BoxIcons",
+    "license": "CC BY 4.0 License",
+    "licenseUrl": "https://github.com/atisawd/boxicons/blob/master/LICENSE",
+    "url": "https://github.com/atisawd/boxicons",
+    "iconsPath": "./icons/boxicons/svg",
+    "subFolders": true,
+    "removeFilePrefixes": [
+      "bxl-",
+      "bx-",
+      "bxs-"
+    ]
+  },
+  {
+    "shortName": "im",
+    "packName": "IcoMoon Free",
+    "license": "CC BY 4.0 License",
+    "licenseUrl": "https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt",
+    "url": "https://github.com/Keyamoon/IcoMoon-Free",
+    "iconsPath": "./icons/IcoMoon-Free/SVG",
+    "subFolders": false,
+    "removeFirtsCharsFromFile": 4
+  },
+  {
+    "shortName": "io",
+    "version": "7.3.0",
+    "packName": "Ionicons",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/ionic-team/ionicons/blob/master/LICENSE",
+    "url": "https://ionicons.com/",
+    "iconsPath": "./icons/ionicons/src/svg",
+    "subFolders": false
+  },
+  {
+    "shortName": "ri",
+    "version": "4.2.0",
+    "packName": "Remix Icon",
+    "license": "Apache License Version 2.0",
+    "licenseUrl": "https://github.com/Remix-Design/RemixIcon/blob/master/License",
+    "url": "https://github.com/Remix-Design/RemixIcon",
+    "iconsPath": "./icons/RemixIcon/icons",
+    "subFolders": true
+  },
+  {
+    "shortName": "si",
+    "version": "11.10.0",
+    "packName": "Simple Icons",
+    "license": "CC0 1.0 Universal",
+    "licenseUrl": "https://github.com/simple-icons/simple-icons/blob/master/LICENSE.md",
+    "url": "https://simpleicons.org/",
+    "iconsPath": "./icons/simple-icons/icons",
+    "subFolders": false
+  },
+  {
+    "shortName": "ti",
+    "version": "2.1.2",
+    "packName": "Typicons",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://github.com/stephenhutchings/typicons.font/blob/master/LICENCE.md",
+    "url": "http://s-ings.com/typicons/",
+    "iconsPath": "./icons/typicons.font/src/svg",
+    "subFolders": false
+  },
+  {
+    "shortName": "hi",
+    "version": "2.1.3",
+    "packName": "Heroicons",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/refactoringui/heroicons/blob/master/LICENSE",
+    "url": "https://github.com/refactoringui/heroicons",
+    "iconsPath": "./icons/heroicons/src/24",
+    "subFolders": true
+  },
+  {
+    "shortName": "cg",
+    "version": "2.1.1",
+    "packName": "css.gg",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/astrit/css.gg/blob/master/LICENSE",
+    "url": "https://github.com/astrit/css.gg",
+    "iconsPath": "./icons/css.gg/icons/svg",
+    "subFolders": false
+  }
+]
