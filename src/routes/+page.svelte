@@ -86,7 +86,7 @@
 				on:input={onChanged}
 			/>
 		</sip-search>
-		<nav class="w-full flex flex-col gap-1">
+		<nav class="w-full flex flex-col gap-1 overflow-auto">
 			{#each manifest as item}
 				<div class="px-3 text-sm">
 					<a
