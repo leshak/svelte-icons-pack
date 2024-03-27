@@ -57,7 +57,7 @@ npm install svelte-icons-pack --save
 | [IcoMoon Free](https://github.com/Keyamoon/IcoMoon-Free) | [CC BY 4.0 License](https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt) |  | 491 | 
 | [Ionicons](https://ionicons.com/) | [MIT](https://github.com/ionic-team/ionicons/blob/master/LICENSE) | 7.3.0 | 1355 | 
 | [Remix Icon](https://github.com/Remix-Design/RemixIcon) | [Apache License Version 2.0](https://github.com/Remix-Design/RemixIcon/blob/master/License) | 4.2.0 | 2860 | 
-| [Simple Icons](https://simpleicons.org/) | [CC0 1.0 Universal](https://github.com/simple-icons/simple-icons/blob/master/LICENSE.md) | 11.10.0 | 3094 | 
+| [Simple Icons](https://simpleicons.org/) | [CC0 1.0 Universal](https://github.com/simple-icons/simple-icons/blob/master/LICENSE.md) | 11.10.0 | 3095 | 
 | [Typicons](http://s-ings.com/typicons/) | [CC BY-SA 3.0](https://github.com/stephenhutchings/typicons.font/blob/master/LICENCE.md) | 2.1.2 | 336 | 
 | [Heroicons](https://github.com/refactoringui/heroicons) | [MIT](https://github.com/refactoringui/heroicons/blob/master/LICENSE) | 2.1.3 | 592 | 
 | [css.gg](https://github.com/astrit/css.gg) | [MIT](https://github.com/astrit/css.gg/blob/master/LICENSE) | 2.1.1 | 704 | 
