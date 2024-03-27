@@ -144,5 +144,15 @@
     "url": "https://github.com/astrit/css.gg",
     "iconsPath": "./icons/css.gg/icons/svg",
     "subFolders": false
+  },
+  {
+    "shortName": "ci",
+    "version": "1.0.0",
+    "packName": "Circum Icons",
+    "license": "MPL-2.0 license",
+    "licenseUrl": "https://github.com/Klarr-Agency/Circum-Icons/blob/main/LICENSE",
+    "url": "https://github.com/Klarr-Agency/Circum-icons",
+    "iconsPath": "./icons/Circum-Icons/svg",
+    "subFolders": false
   }
 ]

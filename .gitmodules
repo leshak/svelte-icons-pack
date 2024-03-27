@@ -40,3 +40,6 @@
 [submodule "icons/css.gg"]
 	path = icons/css.gg
 	url = https://github.com/astrit/css.gg.git
+[submodule "icons/Circum-Icons"]
+	path = icons/Circum-Icons
+	url = https://github.com/Klarr-Agency/Circum-Icons.git
