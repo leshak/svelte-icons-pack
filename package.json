@@ -94,7 +94,9 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
-    "release": "npm run build:icons && npm run build && npm version patch"
+    "release": "npm version patch",
+    "version": "npm run build:icons && git add . && npm run build && git add -A demo",
+    "p1ostversion": "git push && git push --tags"
   },
   "peerDependencies": {
     "svelte": "^3.44.0 || ^4.0.0 || ^5.0.0-next.1"
