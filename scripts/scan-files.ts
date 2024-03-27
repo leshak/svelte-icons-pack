@@ -53,7 +53,7 @@ const cleanAndRenameIcons = (isrc: IconSource, list: SvgIcon[]) => {
 		}
 
 		// clean iconName
-		iconName = iconName.replace(/[\s&]/gi, '-');
+		iconName = iconName.replace(/[\s&_]/gi, '-');
 
 		it.iconName = `${isrc.shortName}-${iconName}`
 			.split('-')
